@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+  body
+    h1
+      a(href="/") Delete page
+    ul
+      h2 title
+      =topic.title
+      br
+      h2 author
+      =topic.author
+      br
+      h2 description
+      =topic.description
+    article
+      form(action="/"+topic.id+'/delete' method="post")
+          input(type="submit" value="delete")

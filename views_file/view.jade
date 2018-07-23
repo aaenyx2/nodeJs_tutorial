@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+  body
+    h1
+      a(href="/") Server Side JavaScript
+    ul
+      each topic in topics
+        li
+          a(href='/'+topic)= topic
+    article
+      h2= title
+      h3= content
+    a(href="/write") 작성
