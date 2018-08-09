@@ -1,1 +1,0 @@
-function hello(l){console.log(l+", hello")}hello("yeen");

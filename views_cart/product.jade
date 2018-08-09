@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+  body
+    h1 Hello this is products list
+    ul
+      each item, index in data
+        li= index + ': '
+          a(href="/cart/"+index)=item.title
+
+    br
+    br
+    h2
+      a(href="/cart") cart
