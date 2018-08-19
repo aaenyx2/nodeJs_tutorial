@@ -2,33 +2,34 @@
 
 node '파일명'
 
-1. app_cart
+### 1. app_cart
 쿠키 기능을 이용해 장바구니(브라우저 종료 시 장바구니에 담긴 아이템이 초기화) 구현
 
-2. app_file
+### 2. app_file
 작성한 글을 파일에 저장하고 파일에 저장된 내용들을 view에 출력하는 기능 구현
 
-3. app_login_file_pbkdf2
+### 3. app_login_file_pbkdf2
 
 pbkdf2 보안을 이용해, 등록해둔 아이디와 비밀번호를 입력했을 때 로그인이 되는 기능 구현
 (아이디: egoing, 비밀번호: 111111)
 
-4. app_login_passport_facebook_mysql
+### 4. app_login_passport_facebook_mysql
 
 mysql 연동 회원가입 및 로그인, passport-facebook api를 이용한 로그인 기능 구현 
 
-** 보안 상 mysql 비밀번호 란과 facebook 연동 비밀번호 란을 비워둠
+* 보안 상 mysql 비밀번호 란과 facebook 연동 비밀번호 란을 비워둠
 
 
 
 ## passport 연동 인증
 
-###1.	Passportjs.org에 접속해서 documentation-configure(환경 설정)을 참고
-###2.	Passport, passport-local(로컬 정보를 이용한 인증), connect-flash 모듈을 설치.
-###3.	var passport = require('passport');
-            var LocalStrategy = require('passport-local').Strategy
-            var flash = require('connect-flash');;
-### 4.	미들웨어
+###1.   Passportjs.org의 documentation-configure 참고
+###2.   Passport, passport-local, connect-flash 모듈 설치.
+###3.	
+                var passport = require('passport');
+                var LocalStrategy = require('passport-local').Strategy
+                var flash = require('connect-flash');;
+### 4.	미들웨어 세팅
 ### 5.	app.use(passport.initialize());
             app.use(passport.session());
             app.use(flash());
@@ -150,9 +151,9 @@ mysql 연동 회원가입 및 로그인, passport-facebook api를 이용한 로�
                                                 failureRedirect: '/login' }));
 
 ### 14. passport.use(new FacebookStrategy) 함수의 내용을 수정해준다. (사이트의 문서는 mongoDB를 기준으로 하므로 수정해줌)
-    받아들인 callback 함수의 profile 인자(페이스북에서 받아온 프로필 정보)를 기존의 회원 데이터베이스와 비교하여
-    authId(식별자) 값이 같은 유저가 있으면 done(null, user)을 return(함수를 해당 명령과 동시에 끝내기 위해).
-    done(null, user)는 deserializeUser 메소드에 의해 req.user 값에 세션으로서 저장된다.
+받아들인 callback 함수의 profile 인자(페이스북에서 받아온 프로필 정보)를 기존의 회원 데이터베이스와 비교하여
+authId(식별자) 값이 같은 유저가 있으면 done(null, user)을 return(함수를 해당 명령과 동시에 끝내기 위해).
+done(null, user)는 deserializeUser 메소드에 의해 req.user 값에 세션으로서 저장된다.
 
                 passport.use(new FacebookStrategy({
                     clientID: '258883774894934',
@@ -187,15 +188,17 @@ mysql 연동 회원가입 및 로그인, passport-facebook api를 이용한 로�
 
 
 ### 15. displayName이나 id 외에 회원의 email이나 다양한 추가적인 정보를 얻어내기 위해선 사용자의 허락을 받아야 함.
-    어떻게 허락을 받는지에 대한 코드가 공식 사이트의 문서의 'permission' 파트에 나와있다.
-    app.get('/auth/facebook') 라우터의 callback 함수의 인자 부분에다가 어떤 인자를 더 받을 것인지 반영해주자.
-    ## 이 때 주의. profile 값으로 읽어올 값들이 변경된 경우에는
-    passport.use(new FacebookStrategy) 함수의 인자 안에
-    (clientID, clientSecret, 등등이 객체의 원소로서 이미 들어가 있는 곳)
+어떻게 허락을 받는지에 대한 코드가 공식 사이트의 문서의 'permission' 파트에 나와있다.
+app.get('/auth/facebook') 라우터의 callback 함수의 인자 부분에다가 어떤 인자를 더 받을 것인지 반영해주자.
 
-    profileFields:['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified', 'displayName']
+* 주의사항
+profile 값으로 읽어올 값들이 변경된 경우에는
+passport.use(new FacebookStrategy) 함수의 인자 안에
+(clientID, clientSecret, 등등이 객체의 원소로서 이미 들어가 있는 곳)
 
-    이라는 코드를 추가해서 어떤 데이터를 프로필로서 받아올 것인지 명시적으로 표시해주어야 한다.
+profileFields:['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified', 'displayName']
+
+이라는 코드를 추가해서 어떤 데이터를 프로필로서 받아올 것인지 명시적으로 표시해주어야 한다.
 
 
             app.get('/auth/facebook',
