@@ -27,16 +27,16 @@ var users = [
   nickname: '인이'}
 ];
 
-app.get('/', function(req,res){
-	if(req.session.count){
-		req.session.count++;
-	} else {
-		req.session.count = 1;
-	}
-	res.send('count: '+req.session.count)
-})
+// app.get('/', function(req,res){
+// 	if(req.session.count){
+// 		req.session.count++;
+// 	} else {
+// 		req.session.count = 1;
+// 	}
+// 	res.send('count: '+req.session.count)
+// })
 
-app.post('/auth/login', function(req,res){
+app.post('/', function(req,res){
   var uname=req.body.username;
   var pwd=req.body.password;
   for(var i=0; i<users.length; i++){
@@ -50,12 +50,12 @@ app.post('/auth/login', function(req,res){
             res.redirect('/welcome'); // 세션 업데이트 정보가 성공적으로 저장된 이후에 콜백함수를 통해 리디렉션
           })
         } else {
-          res.send('Who are you? <a href="/auth/login">login</a>');
+          res.send('Who are you? <a href="/">login</a>');
         }
       });
     }
   }
-  res.send('Who are you? <a href="/auth/login">login</a>');
+  res.send('Who are you? <a href="/">login</a>');
      //아이디가 틀렸을 때  
 })
 
@@ -83,7 +83,7 @@ app.get('/welcome', function(req, res){
   } else {
   res.send(`
     <h1>Welcome</h1>
-    <a href="/auth/login">Login</a>
+    <a href="/">Login</a>
     <a href="/auth/register">Register</a>`)
   }
 })
@@ -109,10 +109,10 @@ app.get('/auth/register', function(req,res){
   res.send(output);
 })
 
-app.get('/auth/login', function(req,res){
+app.get('/', function(req,res){
   var output = `
       <h1> Login </h1>
-      <form action="/auth/login" method="post">
+      <form action="/" method="post">
         <p>
           <input type="text" name="username" placeholder="username">
         </p>

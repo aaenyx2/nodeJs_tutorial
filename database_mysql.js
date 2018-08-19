@@ -7,7 +7,7 @@ var conn = mysql.createConnection({
 
     user : 'root',
 
-    password : 'dlghks12',
+    password : '**',
 
     database:'o2'
 

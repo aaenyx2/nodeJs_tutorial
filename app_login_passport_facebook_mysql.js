@@ -15,7 +15,7 @@ var options = {
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: 'dlghks12',
+    password: '**',
     database: 'o2'
 };
 var conn = mysql.createConnection(options); // or mysql.createPool(options);
@@ -30,7 +30,7 @@ app.use(session({
       host    :'localhost',
       port : 3306,
       user : 'root',
-      password : 'dlghks12',
+      password : '**',
       database:'o2'
   }) // 세션의 저장소 위치를 설정. 이를 설정하면 sessions라는 디렉토리가 생성되어 여기에 session이 저장됨.
   //cookie: { secure: true } // session.count에 대한 접근을 막는 역할

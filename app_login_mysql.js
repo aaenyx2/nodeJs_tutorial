@@ -9,7 +9,7 @@ var options = {
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: 'dlghks12',
+    password: '**',
     database: 'o2'
 };
 

@@ -101,7 +101,7 @@ passport.use(new LocalStrategy( //LocalStrategy라 하는 객체를 생성
 
 passport.use(new FacebookStrategy({
     clientID: '258883774894934',
-    clientSecret: '6b22c66d42f91db46a5f6f711c7e4d61',
+    clientSecret: '**',
     callbackURL: "/auth/facebook/callback", //"http://www.example.com/auth/facebook/callback"
     profileFields:['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified', 'displayName']
     // 프로필로서 어떤 값을 받아올 것인지에 대한 명시적 표시가 필요하다.
