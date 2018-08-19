@@ -23,11 +23,11 @@ mysql 연동 회원가입 및 로그인, passport-facebook api를 이용한 로�
 
 ## passport 연동 인증
 
-###1. Passportjs.org의 documentation-configure 참고
+### 1. Passportjs.org의 documentation-configure 참고
 
-###2. Passport, passport-local, connect-flash 모듈 설치
+### 2. Passport, passport-local, connect-flash 모듈 설치
 
-###3. 최상단에 코드 추가
+### 3. 최상단에 코드 추가
                 var passport = require('passport');
                 var LocalStrategy = require('passport-local').Strategy
                 var flash = require('connect-flash');;
